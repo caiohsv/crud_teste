@@ -1,0 +1,32 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h1>LOL Proplayers</h1>
+            <hr>
+            <a class="btn btn-success" href="">Adicionar</a>
+            <table class="table">
+                <thead>
+                    <th>Nome</th>
+                    <th>autor</th>
+                    <th>genero</th>
+                </thead>
+                <tbody>
+                    {% for livro in lista %}
+                    <tr>
+                        <td>{{ livro.nome }}</td>
+                        <td>{{ livro.autor }}</td>
+                        <td>{{ livro.genero}}</td>
+                        <td>
+                            <a  class="btn btn-warning"
+                            href="{% url 'editpro' pro.id %}">Editar</a>
+                            <a  href="{% url 'deletepro' pro.id %}" class="btn btn-danger" onclick="return confirm('Tem certeza?')">Deletar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
