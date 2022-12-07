@@ -3,14 +3,14 @@
 {% block content %}
     <div class="card">
         <div class="card-body">
-            <h1>LOL Proplayers</h1>
+            <h1>Lista de livros</h1>
             <hr>
-            <a class="btn btn-success" href="">Adicionar</a>
+            <a class="btn btn-success" href="{% url 'addlivro' %}">Adicionar</a>
             <table class="table">
                 <thead>
                     <th>Nome</th>
-                    <th>autor</th>
-                    <th>genero</th>
+                    <th>Autor</th>
+                    <th>Genero</th>
                 </thead>
                 <tbody>
                     {% for livro in lista %}
@@ -20,11 +20,12 @@
                         <td>{{ livro.genero}}</td>
                         <td>
                             <a  class="btn btn-warning"
-                            href="{% url 'editpro' pro.id %}">Editar</a>
-                            <a  href="{% url 'deletepro' pro.id %}" class="btn btn-danger" onclick="return confirm('Tem certeza?')">Deletar</a>
+                                href="{% url 'editlivro' livro.id %}">Editar</a>
+                            <a  href="{% url 'deletelivro' livro.id %}" class="btn btn-danger" onclick="return confirm('Tem certeza?')">Deletar</a>
                         </td>
                     </tr>
                 {% endfor %}
+        
                 </tbody>
             </table>
         </div>
