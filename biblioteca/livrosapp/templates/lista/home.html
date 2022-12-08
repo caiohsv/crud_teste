@@ -25,9 +25,26 @@
                         </td>
                     </tr>
                 {% endfor %}
-        
+                    
                 </tbody>
             </table>
+        </div>
+        <div class="pagination">
+            <span class="step-links">
+                {% if  lista.has_previous %}
+                    <a href="?page={{ lista.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
+                {% endif %}
+    
+                {% if  lista.paginator.num_pages %}
+                <span class="current">
+                    {{  lista.number }} de {{  lista.paginator.num_pages }}
+                </span>
+                {% endif %}
+    
+                {% if lista.has_next %}
+                    <a href="?page={{ lista.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
+                {% endif %}
+            </span>
         </div>
     </div>
 {% endblock %}

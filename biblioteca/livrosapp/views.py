@@ -1,17 +1,26 @@
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator
 from livrosapp.forms import LivrosForm
 from django.contrib.auth.decorators import login_required
+
 
 
 from .models import Livros
 
 @login_required
 def home(request):
-    lista = Livros.objects.all().filter(user=request.user)
+    lista_livros = Livros.objects.all().filter(user=request.user)
+
+    paginator = Paginator(lista_livros, 4)
+
+    page = request.GET.get('page')
+
+    lista = paginator.get_page(page)
 
     context = {
         'lista':lista
     }
+
 
     return render(request, 'lista/home.html', context)
 
